@@ -26,32 +26,45 @@ const translations = {
         {
           title: "Fotos 360°",
           description:
-            "Generamos fotografías panorámicas en 360 grados para mostrar espacios de forma envolvente, clara y profesional.",
+            "Capturamos imágenes inmersivas en 360 grados para mostrar cada espacio de manera interactiva y profesional.",
+          links: [
+            {
+              label: "Ver ejemplo",
+              url: "https://tour.panoee.net/69af7f005af18ea580cf6c62/69afbfabae5537d61cfce974",
+            },
+          ],
         },
         {
-          title: "Tours virtuales",
+          title: "Virtual Tour",
           description:
-            "Conectamos escenas e información interactiva para que el usuario recorra cada ambiente como si estuviera ahí.",
-        },
-        {
-          title: "Hosting 24hs",
-          description:
-            "Alojamos tus recorridos virtuales para que estén disponibles online de forma estable, rápida y segura.",
+            "Creamos recorridos virtuales fluidos e intuitivos para que tus clientes exploren cada ambiente desde cualquier lugar.",
+          links: [
+            {
+              label: "Casa",
+              url: "https://tour.panoee.net/Quinta/6965a0b9582b42000898031b",
+            },
+            {
+              label: "Negocio",
+              url: "https://tour.panoee.net/Bigdogsburgers/69955e93477dd21ba5eb67dc",
+            },
+          ],
         },
         {
           title: "Google Street View",
           description:
-            "Llevamos tu negocio a más clientes integrando la experiencia virtual con presencia visible en Street View.",
+            "Integramos tu negocio o espacio en Google Street View para aumentar visibilidad y presencia online.",
+          links: [
+            {
+              label: "Ver ejemplo",
+              url: "https://www.google.com/maps/place/Big+Dog's+Burgers/@-31.9080402,115.8815817,3a,75y,99.48h,110.21t/data=!3m8!1e1!3m6!1sCIABIhAY8D4g6-41b3yFp8sJkzF5!2e10!3e11!6shttps:%2F%2Flh3.googleusercontent.com%2Fgpms-cs-s%2FAFfmt2bQZYYxJKdbZcjS5lRl8iegLQaRcB56JUmkc6OW2vwUTfRJqwLJj94v5jNSg0DRhVeDCJzAwz-jWzsOcxUPrx75n42hbkpXmbs4ioDIAtAOL6NHTotji3h7ThE68qW5-akKTex6Usw7Y4iP%3Dw900-h600-k-no-pi-20.20793261449873-ya301.6523614381518-ro0-fo100!7i11904!8i5952!4m9!3m8!1s0x2a32b1033f45b1ed:0xaee246711f50efef!8m2!3d-31.908019!4d115.881422!10e5!14m1!1BCgIgARICCAI!16s%2Fg%2F11mvyg6ky9?entry=ttu&g_ep=EgoyMDI2MDMwNS4wIKXMDSoASAFQAw%3D%3D",
+            },
+          ],
         },
         {
-          title: "Videos 360°",
+          title: "Fotografía Profesional",
           description:
-            "Creamos contenido audiovisual inmersivo que permite explorar cada escena con una experiencia más dinámica.",
-        },
-        {
-          title: "Plano comercial",
-          description:
-            "Diseñamos planos comerciales claros y atractivos para complementar la presentación visual de tus espacios.",
+            "Realizamos fotografías profesionales de alta calidad para potenciar la imagen visual de tu marca o propiedad.",
+          links: [],
         },
       ],
     },
@@ -107,8 +120,7 @@ const translations = {
       servicesTitle: "Servicios",
       contactTitle: "Contacto",
       rights: "Todos los derechos reservados.",
-      signature:
-        "Diseño visual inmersivo y presencia digital profesional.",
+      signature: "Diseño visual inmersivo y presencia digital profesional.",
     },
   },
 
@@ -139,32 +151,45 @@ const translations = {
         {
           title: "360° Photography",
           description:
-            "We create panoramic 360-degree photography to showcase spaces in an immersive, clear and professional way.",
+            "We capture immersive 360-degree images to showcase every space in an interactive and professional way.",
+          links: [
+            {
+              label: "View example",
+              url: "https://tour.panoee.net/69af7f005af18ea580cf6c62/69afbfabae5537d61cfce974",
+            },
+          ],
         },
         {
-          title: "Virtual Tours",
+          title: "Virtual Tour",
           description:
-            "We connect scenes and interactive information so users can move through each environment as if they were there.",
-        },
-        {
-          title: "24/7 Hosting",
-          description:
-            "We host your virtual tours so they stay online with stable, fast and secure performance.",
+            "We create smooth and intuitive virtual tours so clients can explore every environment from anywhere.",
+          links: [
+            {
+              label: "Home",
+              url: "https://tour.panoee.net/Quinta/6965a0b9582b42000898031b",
+            },
+            {
+              label: "Business",
+              url: "https://tour.panoee.net/Bigdogsburgers/69955e93477dd21ba5eb67dc",
+            },
+          ],
         },
         {
           title: "Google Street View",
           description:
-            "We help your business reach more clients by integrating your virtual experience into Street View visibility.",
+            "We integrate your business or space into Google Street View to improve visibility and online presence.",
+          links: [
+            {
+              label: "View example",
+              url: "https://www.google.com/maps/place/Big+Dog's+Burgers/@-31.9080402,115.8815817,3a,75y,99.48h,110.21t/data=!3m8!1e1!3m6!1sCIABIhAY8D4g6-41b3yFp8sJkzF5!2e10!3e11!6shttps:%2F%2Flh3.googleusercontent.com%2Fgpms-cs-s%2FAFfmt2bQZYYxJKdbZcjS5lRl8iegLQaRcB56JUmkc6OW2vwUTfRJqwLJj94v5jNSg0DRhVeDCJzAwz-jWzsOcxUPrx75n42hbkpXmbs4ioDIAtAOL6NHTotji3h7ThE68qW5-akKTex6Usw7Y4iP%3Dw900-h600-k-no-pi-20.20793261449873-ya301.6523614381518-ro0-fo100!7i11904!8i5952!4m9!3m8!1s0x2a32b1033f45b1ed:0xaee246711f50efef!8m2!3d-31.908019!4d115.881422!10e5!14m1!1BCgIgARICCAI!16s%2Fg%2F11mvyg6ky9?entry=ttu&g_ep=EgoyMDI2MDMwNS4wIKXMDSoASAFQAw%3D%3D",
+            },
+          ],
         },
         {
-          title: "360° Videos",
+          title: "Professional Photography",
           description:
-            "We produce immersive audiovisual content that lets viewers explore each scene in a more dynamic way.",
-        },
-        {
-          title: "Commercial Floor Plan",
-          description:
-            "We design clear and attractive commercial floor plans to complement the visual presentation of your spaces.",
+            "We provide high-quality professional photography to enhance the visual image of your brand or property.",
+          links: [],
         },
       ],
     },
@@ -220,8 +245,7 @@ const translations = {
       servicesTitle: "Services",
       contactTitle: "Contact",
       rights: "All rights reserved.",
-      signature:
-        "Immersive visual design and professional digital presence.",
+      signature: "Immersive visual design and professional digital presence.",
     },
   },
 };

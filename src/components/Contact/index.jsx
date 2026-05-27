@@ -5,8 +5,47 @@ import {
   Building2,
   ClipboardList,
   Ruler,
+  MessageCircle,
+  Camera,
+  Users,
 } from "lucide-react";
 import useRevealOnScroll from "../../hooks/useRevealOnScroll";
+
+const contactCards = [
+  {
+    label: "Email",
+    value: "info.pov360@gmail.com",
+    href: "mailto:info.pov360@gmail.com",
+    icon: Mail,
+  },
+  {
+    label: "WhatsApp",
+    value: "+61 0472 634 605",
+    href: "https://wa.me/61472634605",
+    icon: MessageCircle,
+  },
+  {
+    label: "Location",
+    value: "Perth, WA",
+    href: null,
+    icon: MapPin,
+  },
+];
+
+const socialLinks = [
+  {
+    label: "Instagram",
+    value: "@pov.360tour",
+    href: "https://www.instagram.com/pov.360tour/",
+    icon: Camera,
+  },
+  {
+    label: "Facebook",
+    value: "POV360",
+    href: "https://www.facebook.com/profile.php?id=61586841968506&sk=photos",
+    icon: Users,
+  },
+];
 
 const Contact = ({ t }) => {
   const { ref, isVisible } = useRevealOnScroll({
@@ -44,7 +83,7 @@ const Contact = ({ t }) => {
           </div>
 
           <div className="mt-14 grid gap-8 xl:grid-cols-[0.95fr_1.45fr]">
-            <div
+            <aside
               className={`rounded-[2rem] border border-[#D1D1D1] bg-[#0A0A0A] p-7 text-white shadow-[0_18px_50px_rgba(10,10,10,0.14)] transition-all duration-700 md:p-8 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
@@ -62,164 +101,138 @@ const Contact = ({ t }) => {
               </p>
 
               <div className="mt-8 space-y-4">
-                <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
-                    <Mail size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-white">
-                      {t?.contact?.contactItems?.emailLabel || "Email"}
-                    </p>
-                    <p className="mt-1 text-sm text-[#D1D1D1]">
-                      hola@pov360.com
-                    </p>
-                  </div>
-                </div>
+                {contactCards.map((item) => {
+                  const Icon = item.icon;
 
-                <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
-                    <Phone size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-white">
-                      {t?.contact?.contactItems?.phoneLabel || "Teléfono"}
-                    </p>
-                    <p className="mt-1 text-sm text-[#D1D1D1]">
-                      +61 000 000 000
-                    </p>
-                  </div>
-                </div>
+                  const content = (
+                    <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-[#9db7d3]/40 hover:bg-white/10">
+                      <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10">
+                        <Icon size={18} />
+                      </div>
 
-                <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
-                    <MapPin size={18} />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-white">
-                      {t?.contact?.contactItems?.locationLabel || "Ubicación"}
-                    </p>
-                    <p className="mt-1 text-sm text-[#D1D1D1]">
-                      Perth, Western Australia
-                    </p>
-                  </div>
+                      <div>
+                        <p className="text-sm font-semibold text-white">
+                          {item.label}
+                        </p>
+                        <p className="mt-1 text-sm text-[#D1D1D1]">
+                          {item.value}
+                        </p>
+                      </div>
+                    </div>
+                  );
+
+                  return item.href ? (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div key={item.label}>{content}</div>
+                  );
+                })}
+              </div>
+
+              <div className="mt-8 border-t border-white/10 pt-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7A7F85]">
+                  Social
+                </p>
+
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {socialLinks.map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-[#D1D1D1] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#9db7d3]/45 hover:bg-white/10 hover:text-white"
+                      >
+                        <Icon size={16} />
+                        {item.value}
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
-            </div>
+            </aside>
 
             <div
-              className={`rounded-[2rem] border border-[#D1D1D1] bg-white p-7 shadow-[0_18px_50px_rgba(10,10,10,0.07)] transition-all duration-700 delay-100 md:p-8 ${
+              className={`rounded-[2rem] border border-[#D1D1D1] bg-white p-7 shadow-[0_18px_50px_rgba(10,10,10,0.07)] transition-all delay-100 duration-700 md:p-8 ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               }`}
             >
               <form className="grid gap-6 lg:grid-cols-2">
                 <div className="space-y-6">
-                  <div>
-                    <label
-                      htmlFor="fullName"
-                      className="mb-2.5 flex items-center gap-2 text-sm font-medium text-[#1f242a]"
-                    >
-                      <Mail size={16} className="text-[#7A7F85]" />
-                      {t?.contact?.form?.fullNameLabel || "Nombre y apellido"}
-                    </label>
-                    <input
-                      id="fullName"
-                      name="fullName"
-                      type="text"
-                      placeholder={
-                        t?.contact?.form?.fullNamePlaceholder || "Tu nombre completo"
-                      }
-                      className="h-13 w-full rounded-2xl border border-[#D1D1D1] bg-[#fafafa] px-4 text-sm text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
-                    />
-                  </div>
+                  <InputField
+                    id="fullName"
+                    name="fullName"
+                    icon={Mail}
+                    label={t?.contact?.form?.fullNameLabel || "Nombre y apellido"}
+                    placeholder={
+                      t?.contact?.form?.fullNamePlaceholder || "Tu nombre completo"
+                    }
+                    type="text"
+                  />
 
-                  <div>
-                    <label
-                      htmlFor="company"
-                      className="mb-2.5 flex items-center gap-2 text-sm font-medium text-[#1f242a]"
-                    >
-                      <Building2 size={16} className="text-[#7A7F85]" />
-                      {t?.contact?.form?.companyLabel || "Inmobiliaria / Empresa"}
-                    </label>
-                    <input
-                      id="company"
-                      name="company"
-                      type="text"
-                      placeholder={
-                        t?.contact?.form?.companyPlaceholder || "Nombre de tu empresa"
-                      }
-                      className="h-13 w-full rounded-2xl border border-[#D1D1D1] bg-[#fafafa] px-4 text-sm text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
-                    />
-                  </div>
+                  <InputField
+                    id="company"
+                    name="company"
+                    icon={Building2}
+                    label={t?.contact?.form?.companyLabel || "Inmobiliaria / Empresa"}
+                    placeholder={
+                      t?.contact?.form?.companyPlaceholder || "Nombre de tu empresa"
+                    }
+                    type="text"
+                  />
 
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="mb-2.5 flex items-center gap-2 text-sm font-medium text-[#1f242a]"
-                    >
-                      <Mail size={16} className="text-[#7A7F85]" />
-                      {t?.contact?.form?.emailLabel || "Casilla de correo"}
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder={t?.contact?.form?.emailPlaceholder || "Email"}
-                      className="h-13 w-full rounded-2xl border border-[#D1D1D1] bg-[#fafafa] px-4 text-sm text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
-                    />
-                  </div>
+                  <InputField
+                    id="email"
+                    name="email"
+                    icon={Mail}
+                    label={t?.contact?.form?.emailLabel || "Casilla de correo *"}
+                    placeholder={t?.contact?.form?.emailPlaceholder || "Email"}
+                    type="email"
+                  />
 
-                  <div>
-                    <label
-                      htmlFor="address"
-                      className="mb-2.5 flex items-center gap-2 text-sm font-medium text-[#1f242a]"
-                    >
-                      <MapPin size={16} className="text-[#7A7F85]" />
-                      {t?.contact?.form?.addressLabel || "Dirección del relevamiento"}
-                    </label>
-                    <input
-                      id="address"
-                      name="address"
-                      type="text"
-                      placeholder={
-                        t?.contact?.form?.addressPlaceholder || "Selecciona una dirección"
-                      }
-                      className="h-13 w-full rounded-2xl border border-[#D1D1D1] bg-[#fafafa] px-4 text-sm text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
-                    />
-                  </div>
+                  <InputField
+                    id="address"
+                    name="address"
+                    icon={MapPin}
+                    label={
+                      t?.contact?.form?.addressLabel || "Dirección del relevamiento"
+                    }
+                    placeholder={
+                      t?.contact?.form?.addressPlaceholder ||
+                      "Selecciona una dirección"
+                    }
+                    type="text"
+                  />
 
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="mb-2.5 flex items-center gap-2 text-sm font-medium text-[#1f242a]"
-                    >
-                      <Phone size={16} className="text-[#7A7F85]" />
-                      {t?.contact?.form?.phoneLabel || "Teléfono"}
-                    </label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder={t?.contact?.form?.phonePlaceholder || "Teléfono"}
-                      className="h-13 w-full rounded-2xl border border-[#D1D1D1] bg-[#fafafa] px-4 text-sm text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
-                    />
-                  </div>
+                  <InputField
+                    id="phone"
+                    name="phone"
+                    icon={Phone}
+                    label={t?.contact?.form?.phoneLabel || "Teléfono"}
+                    placeholder={t?.contact?.form?.phonePlaceholder || "Teléfono"}
+                    type="tel"
+                  />
 
-                  <div>
-                    <label
-                      htmlFor="area"
-                      className="mb-2.5 flex items-center gap-2 text-sm font-medium text-[#1f242a]"
-                    >
-                      <Ruler size={16} className="text-[#7A7F85]" />
-                      {t?.contact?.form?.areaLabel || "Metros cuadrados a relevar"}
-                    </label>
-                    <input
-                      id="area"
-                      name="area"
-                      type="text"
-                      placeholder={t?.contact?.form?.areaPlaceholder || "Ej: 120 m²"}
-                      className="h-13 w-full rounded-2xl border border-[#D1D1D1] bg-[#fafafa] px-4 text-sm text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
-                    />
-                  </div>
+                  <InputField
+                    id="area"
+                    name="area"
+                    icon={Ruler}
+                    label={
+                      t?.contact?.form?.areaLabel || "Metros cuadrados a relevar"
+                    }
+                    placeholder={t?.contact?.form?.areaPlaceholder || "Ej: 120 m²"}
+                    type="text"
+                  />
                 </div>
 
                 <div className="flex flex-col">
@@ -261,6 +274,28 @@ const Contact = ({ t }) => {
         </div>
       </div>
     </section>
+  );
+};
+
+const InputField = ({ id, name, icon: Icon, label, placeholder, type }) => {
+  return (
+    <div>
+      <label
+        htmlFor={id}
+        className="mb-2.5 flex items-center gap-2 text-sm font-medium text-[#1f242a]"
+      >
+        <Icon size={16} className="text-[#7A7F85]" />
+        {label}
+      </label>
+
+      <input
+        id={id}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        className="h-14 w-full rounded-2xl border border-[#D1D1D1] bg-[#fafafa] px-4 text-sm text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
+      />
+    </div>
   );
 };
 
