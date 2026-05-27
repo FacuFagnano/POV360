@@ -91,7 +91,7 @@ const Navbar = ({ language = "es", setLanguage, t }) => {
           </div>
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-8 md:flex text-white">
           {navItems.map((item) => (
             <a
               key={item.key}

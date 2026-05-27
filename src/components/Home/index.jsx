@@ -9,7 +9,7 @@ const Home = ({ t }) => {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#0A0A0A] pt-28 md:pt-32"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#0A0A0A] pt-24 pb-20 md:pt-28"
     >
       <div className="absolute inset-0">
         <img
@@ -25,13 +25,13 @@ const Home = ({ t }) => {
 
       <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/90 via-[#0A0A0A]/65 to-[#0A0A0A]/45" />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 md:px-8 lg:px-10">
+      <div className="relative z-30 mx-auto w-full max-w-7xl px-5 md:px-8 lg:px-10">
         <div
           ref={ref}
           className={`max-w-3xl transition-all duration-1000 ease-out ${
             isVisible
               ? "translate-y-0 opacity-100 blur-0"
-              : "translate-y-10 opacity-0 blur-sm"
+              : "translate-y-30 opacity-0 blur-sm"
           }`}
         >
           <div className="mb-6 inline-flex items-center rounded-full border border-[#D1D1D1]/20 bg-white/10 px-4 py-2 backdrop-blur-md">
@@ -51,14 +51,14 @@ const Home = ({ t }) => {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
               href="#services"
-              className="inline-flex items-center justify-center rounded-full border border-[#9db7d3]/40 bg-[#9db7d3]/15 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-[#9db7d3]/70 hover:bg-[#9db7d3]/25 hover:shadow-[0_10px_30px_rgba(157,183,211,0.18)]"
+              className="inline-flex items-center justify-center rounded-full border border-[#9db7d3]/40 bg-[#f5f5f5]/80 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-[#9db7d3]/70 hover:bg-[#f5f5f5] hover:shadow-[0_10px_30px_rgba(157,183,211,0.18)]"
             >
               {t?.home?.primaryCta}
             </a>
 
             <a
               href="#contact"
-              className="inline-flex items-center justify-center rounded-full border border-[#D1D1D1]/30 bg-white/5 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/10"
+              className="inline-flex items-center justify-center rounded-full border border-[#D1D1D1]/30 bg-[#f5f5f5]/80 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-white/60 hover:bg-[#f5f5f5]"
             >
               {t?.home?.secondaryCta}
             </a>
@@ -66,8 +66,7 @@ const Home = ({ t }) => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 z-10 h-24 bg-gradient-to-t from-[#F5F5F5] to-transparent" />
-    </section>
+<div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-16 bg-gradient-to-t from-[#F5F5F5] via-[#F5F5F5]/70 to-transparent" />    </section>
   );
 };
 
