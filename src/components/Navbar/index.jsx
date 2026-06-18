@@ -180,49 +180,43 @@ const Navbar = ({ language = "es", setLanguage, t }) => {
         }`}
       >
         <div className="mx-auto flex max-w-7xl flex-col px-5 py-4">
-          <nav className="flex flex-col">
+          <nav className="flex flex-col items-center gap-3">
             {navItems.map((item) => (
               <a
                 key={item.key}
                 href={item.href}
                 onClick={closeMobileMenu}
-                className="rounded-2xl px-4 py-3 text-sm font-medium text-[#F5F5F5] transition-all duration-300 hover:bg-white/5 hover:text-white"
+                className="flex w-full items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-center text-sm font-semibold !text-white transition-all duration-300 hover:border-[#9db7d3]/40 hover:bg-white/10"
               >
                 {t?.nav?.[item.key] ?? item.key}
               </a>
             ))}
           </nav>
 
-          <div className="mt-4 border-t border-white/10 pt-4">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-[#7A7F85]">
-              {t?.nav?.language ?? "Language"}
-            </p>
+          <div className="grid grid-cols-2 gap-2 pt-4">
+            <button
+              type="button"
+              onClick={() => handleLanguageChange("es")}
+              className={`rounded-2xl px-4 py-3 text-center text-sm font-semibold transition-all duration-300 ${
+                language === "es"
+                  ? "border border-[#9db7d3]/50 bg-[#9db7d3]/20 !text-white"
+                  : "border border-white/10 bg-white/5 !text-white hover:bg-white/10"
+              }`}
+            >
+              ES
+            </button>
 
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={() => handleLanguageChange("es")}
-                className={`rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-300 ${
-                  language === "es"
-                    ? "border border-[#9db7d3]/40 bg-[#9db7d3]/15 text-white"
-                    : "border border-white/10 bg-white/5 text-[#D1D1D1] hover:bg-white/10 hover:text-white"
-                }`}
-              >
-                ES
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleLanguageChange("en")}
-                className={`rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-300 ${
-                  language === "en"
-                    ? "border border-[#9db7d3]/40 bg-[#9db7d3]/15 text-white"
-                    : "border border-white/10 bg-white/5 text-[#D1D1D1] hover:bg-white/10 hover:text-white"
-                }`}
-              >
-                EN
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => handleLanguageChange("en")}
+              className={`rounded-2xl px-4 py-3 text-center text-sm font-semibold transition-all duration-300 ${
+                language === "en"
+                  ? "border border-[#9db7d3]/50 bg-[#9db7d3]/20 !text-white"
+                  : "border border-white/10 bg-white/5 !text-white hover:bg-white/10"
+              }`}
+            >
+              EN
+            </button>
           </div>
         </div>
       </div>
