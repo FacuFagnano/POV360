@@ -77,8 +77,12 @@ const Navbar = ({ language = "es", setLanguage, t }) => {
           className="group flex items-center gap-3"
           aria-label="POV360"
         >
-          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D1D1D1]/30 bg-white/5 text-sm font-semibold tracking-[0.18em] text-white transition-all duration-300 group-hover:border-[#c7d8ea]/50 group-hover:bg-white/10">
-            POV
+          <div className="flex h-11 w-11 items-center justify-center overflow-visible">
+            <img
+              src="/Isologotipo-POV360.png"
+              alt="POV360"
+              className="h-11 w-11 scale-[1.9] object-contain transition-transform duration-300 group-hover:scale-[1.5]"
+            />
           </div>
 
           <div className="flex flex-col leading-none">

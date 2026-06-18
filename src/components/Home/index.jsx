@@ -18,13 +18,9 @@ const Home = ({ t }) => {
           className="h-full w-full object-cover object-center"
         />
       </div>
-
-      <div className="absolute inset-0 bg-[#0A0A0A]/70" />
-
+      <div className="absolute inset-0 bg-[#0A0A0A]/35" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(157,183,211,0.18),transparent_38%)]" />
-
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/90 via-[#0A0A0A]/65 to-[#0A0A0A]/45" />
-
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/70 via-[#0A0A0A]/35 to-transparent" />
       <div className="relative z-30 mx-auto w-full max-w-7xl px-5 md:px-8 lg:px-10">
         <div
           ref={ref}
@@ -65,8 +61,8 @@ const Home = ({ t }) => {
           </div>
         </div>
       </div>
-
-<div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-16 bg-gradient-to-t from-[#F5F5F5] via-[#F5F5F5]/70 to-transparent" />    </section>
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-16 bg-gradient-to-t from-[#F5F5F5] via-[#F5F5F5]/70 to-transparent" />{" "}
+    </section>
   );
 };
 

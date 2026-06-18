@@ -11,7 +11,7 @@ const translations = {
       badge: "Experiencias inmersivas 360°",
       title: "Transformamos espacios en experiencias visuales que impactan",
       subtitle:
-        "Creamos recorridos virtuales, fotos 360° y contenido inmersivo para mostrar tu proyecto con una presencia moderna, profesional y memorable.",
+        "Creamos recorridos virtuales, fotografías profesionales, fotos 360° y contenido inmersivo para destacar tu proyecto con una presencia moderna, confiable y memorable.",
       primaryCta: "Ver servicios",
       secondaryCta: "Contacto",
     },
@@ -136,7 +136,7 @@ const translations = {
       badge: "Immersive 360° experiences",
       title: "We transform spaces into visual experiences that make an impact",
       subtitle:
-        "We create virtual tours, 360° photography and immersive content to present your project with a modern, professional and memorable presence.",
+        "We create virtual tours, professional photography, 360° imagery, and immersive content that help your project stand out with a modern, professional, and memorable presence.",
       primaryCta: "View services",
       secondaryCta: "Contact",
     },

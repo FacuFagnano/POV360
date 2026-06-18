@@ -54,3 +54,14 @@ img {
 section {
   scroll-margin-top: 96px;
 }
+
+@keyframes whatsappPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+}

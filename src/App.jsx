@@ -5,6 +5,7 @@ import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import translations from "./data/translations";
+import WhatsAppFloat from "./components/WhatsAppFloat";
 
 function App() {
   const [language, setLanguage] = useState("es");
@@ -33,6 +34,7 @@ function App() {
         <Contact t={t} />
       </main>
       <Footer t={t} />
+      <WhatsAppFloat />
     </div>
   );
 }
