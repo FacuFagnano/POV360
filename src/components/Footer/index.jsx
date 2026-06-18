@@ -1,10 +1,12 @@
 import {
   Mail,
-  Phone,
   MapPin,
-  Camera,
-  Globe,
 } from "lucide-react";
+
+import{
+  FaWhatsapp,
+  FaInstagram,
+} from "react-icons/fa";
 
 import useRevealOnScroll from "../../hooks/useRevealOnScroll";
 
@@ -12,12 +14,7 @@ const socialLinks = [
   {
     label: "Instagram",
     href: "https://www.instagram.com/pov.360tour/",
-    icon: Camera,
-  },
-  {
-    label: "Facebook",
-    href: "https://www.facebook.com/profile.php?id=61586841968506&sk=photos",
-    icon: Globe,
+    icon: FaInstagram,
   },
 ];
 
@@ -175,7 +172,7 @@ const Footer = ({ t }) => {
                   className="flex items-start gap-3 transition-opacity duration-300 hover:opacity-100 hover:[&_p]:text-white"
                 >
                   <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#D1D1D1]">
-                    <Phone size={16} />
+                    <FaWhatsapp size={16} />
                   </div>
 
                   <div>

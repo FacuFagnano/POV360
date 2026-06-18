@@ -1,14 +1,19 @@
 import {
+  UserRound,
   Mail,
   Phone,
   MapPin,
   Building2,
   ClipboardList,
   Ruler,
-  MessageCircle,
-  Camera,
   Users,
 } from "lucide-react";
+
+import{
+  FaWhatsapp,
+  FaInstagram,
+} from "react-icons/fa";
+
 import useRevealOnScroll from "../../hooks/useRevealOnScroll";
 
 const contactCards = [
@@ -22,7 +27,7 @@ const contactCards = [
     label: "WhatsApp",
     value: "+61 0472 634 605",
     href: "https://wa.me/61472634605",
-    icon: MessageCircle,
+    icon: FaWhatsapp,
   },
   {
     label: "Location",
@@ -37,13 +42,7 @@ const socialLinks = [
     label: "Instagram",
     value: "@pov.360tour",
     href: "https://www.instagram.com/pov.360tour/",
-    icon: Camera,
-  },
-  {
-    label: "Facebook",
-    value: "POV360",
-    href: "https://www.facebook.com/profile.php?id=61586841968506&sk=photos",
-    icon: Users,
+    icon: FaInstagram,
   },
 ];
 
@@ -172,7 +171,7 @@ const Contact = ({ t }) => {
                   <InputField
                     id="fullName"
                     name="fullName"
-                    icon={Mail}
+                    icon={UserRound}
                     label={t?.contact?.form?.fullNameLabel || "Nombre y apellido"}
                     placeholder={
                       t?.contact?.form?.fullNamePlaceholder || "Tu nombre completo"

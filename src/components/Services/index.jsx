@@ -1,9 +1,6 @@
-import {
-  Image as ImageIcon,
-  ScanSearch,
-  Map,
-  Camera,
-} from "lucide-react";
+import { Map, Camera } from "lucide-react";
+import { TbView360Number } from "react-icons/tb";
+import { FaPersonWalkingArrowLoopLeft } from "react-icons/fa6";
 import useRevealOnScroll from "../../hooks/useRevealOnScroll";
 
 const positions = [
@@ -13,7 +10,7 @@ const positions = [
   "left-[50%] bottom-[10%] -translate-x-1/2",
 ];
 
-const icons = [ImageIcon, ScanSearch, Map, Camera];
+const icons = [TbView360Number, FaPersonWalkingArrowLoopLeft, Map, Camera];
 
 const Services = ({ t }) => {
   const { ref, isVisible } = useRevealOnScroll({
@@ -65,11 +62,9 @@ const Services = ({ t }) => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.12)_38%,rgba(0,0,0,0.58)_100%)]" />
 
             <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
-              <img
-                src="/Isologotipo-POV360.png"
-                alt="POV360 logo"
-                className="w-28 object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.35)]"
-              />
+              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#D1D1D1]/30 bg-[#0A0A0A]/92 text-sm font-semibold tracking-[0.18em] text-white shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
+                POV
+              </div>
             </div>
 
             {services.map((service, index) => {
@@ -107,7 +102,6 @@ const Services = ({ t }) => {
                     >
                       <Icon
                         size={26}
-                        strokeWidth={1.8}
                         className="absolute transition-all duration-300 group-hover:scale-75 group-hover:opacity-0"
                       />
 
@@ -172,7 +166,7 @@ const Services = ({ t }) => {
                     className="rounded-3xl border border-[#D1D1D1] bg-white p-5 shadow-[0_12px_35px_rgba(10,10,10,0.05)]"
                   >
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#D1D1D1] bg-[#0A0A0A] text-white">
-                      <Icon size={24} strokeWidth={1.8} />
+                      <Icon size={24} />
                     </div>
 
                     <h3 className="mt-5 text-lg font-semibold text-[#0A0A0A]">
