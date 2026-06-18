@@ -88,7 +88,7 @@ const Footer = ({ t }) => {
                       aria-label={item.label}
                       className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[#D1D1D1] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#9db7d3]/45 hover:bg-white/10 hover:text-white"
                     >
-                      <Icon size={18} />
+                      <Icon size={20} />
                     </a>
                   );
                 })}
