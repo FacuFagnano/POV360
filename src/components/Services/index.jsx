@@ -148,11 +148,9 @@ const Services = ({ t }) => {
               <div className="absolute inset-0 bg-black/35" />
 
               <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
-                <img
-                  src="/Isologotipo-POV360.png"
-                  alt="POV360 logo"
-                  className="w-24 object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.35)]"
-                />
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#D1D1D1]/30 bg-[#0A0A0A]/92 text-sm font-semibold tracking-[0.18em] text-white shadow-[0_8px_20px_rgba(0,0,0,0.35)]">
+                  POV
+                </div>
               </div>
             </div>
 
