@@ -87,7 +87,7 @@ const translations = {
       },
 
       form: {
-        fullNameLabel: "Nombre y apellido",
+        fullNameLabel: "Nombre y apellido *",
         fullNamePlaceholder: "Tu nombre completo",
 
         companyLabel: "Inmobiliaria / Empresa",
@@ -96,7 +96,7 @@ const translations = {
         emailLabel: "Casilla de correo *",
         emailPlaceholder: "Email",
 
-        addressLabel: "Dirección del relevamiento",
+        addressLabel: "Dirección del relevamiento *",
         addressPlaceholder: "Selecciona una dirección",
 
         phoneLabel: "Teléfono",
