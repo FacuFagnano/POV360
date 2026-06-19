@@ -173,7 +173,7 @@ const Contact = ({ t }) => {
               }`}
             >
               <form
-                action="https://formsubmit.co/info.pov360@gmail.com"
+                action="https://formsubmit.co/facundofagnano+TEST@gmail.com"
                 method="POST"
                 className="grid gap-6 lg:grid-cols-2"
               >
