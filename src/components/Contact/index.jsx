@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   UserRound,
   Mail,
@@ -9,8 +11,10 @@ import {
 } from "lucide-react";
 
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
-
 import useRevealOnScroll from "../../hooks/useRevealOnScroll";
+
+const FORMSUBMIT_ENDPOINT =
+  "https://formsubmit.co/ajax/facundofagnano@gmail.com";
 
 const contactCards = [
   {
@@ -47,6 +51,42 @@ const Contact = ({ t }) => {
     threshold: 0.08,
     rootMargin: "0px 0px -10% 0px",
   });
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setSuccess(false);
+    setError("");
+
+    const formData = new FormData(e.target);
+
+    formData.append("_subject", "Nueva consulta desde POV360");
+    formData.append("_captcha", "false");
+    formData.append("_template", "table");
+
+    try {
+      const response = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("No se pudo enviar el formulario.");
+      }
+
+      setSuccess(true);
+      e.target.reset();
+    } catch (err) {
+      setError("No se pudo enviar el formulario. Intentá nuevamente.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section id="contact" className="relative bg-[#f2f3f5] py-24 md:py-28">
@@ -173,26 +213,13 @@ const Contact = ({ t }) => {
               }`}
             >
               <form
-                action="https://formsubmit.co/facundofagnano+TEST@gmail.com"
-                method="POST"
+                onSubmit={handleSubmit}
                 className="grid gap-6 lg:grid-cols-2"
               >
-                <input
-                  type="hidden"
-                  name="_subject"
-                  value="Nueva consulta desde POV360"
-                />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_template" value="table" />
-                <input
-                  type="hidden"
-                  name="_next"
-                  value="https://www.pov360virtualtour.com/#contact"
-                />
                 <div className="space-y-6">
                   <InputField
                     id="fullName"
-                    name="fullName"
+                    name="Nombre y apellido"
                     required
                     icon={UserRound}
                     label={
@@ -207,7 +234,7 @@ const Contact = ({ t }) => {
 
                   <InputField
                     id="company"
-                    name="company"
+                    name="Inmobiliaria / Empresa"
                     icon={Building2}
                     label={
                       t?.contact?.form?.companyLabel || "Inmobiliaria / Empresa"
@@ -221,7 +248,7 @@ const Contact = ({ t }) => {
 
                   <InputField
                     id="email"
-                    name="email"
+                    name="Email"
                     required
                     icon={Mail}
                     label={
@@ -233,7 +260,7 @@ const Contact = ({ t }) => {
 
                   <InputField
                     id="address"
-                    name="address"
+                    name="Dirección del relevamiento"
                     required
                     icon={MapPin}
                     label={
@@ -249,7 +276,7 @@ const Contact = ({ t }) => {
 
                   <InputField
                     id="phone"
-                    name="phone"
+                    name="Teléfono"
                     icon={Phone}
                     label={t?.contact?.form?.phoneLabel || "Teléfono"}
                     placeholder={
@@ -260,7 +287,7 @@ const Contact = ({ t }) => {
 
                   <InputField
                     id="area"
-                    name="area"
+                    name="Metros cuadrados"
                     icon={Ruler}
                     label={
                       t?.contact?.form?.areaLabel ||
@@ -272,6 +299,7 @@ const Contact = ({ t }) => {
                     type="text"
                   />
                 </div>
+
                 <div className="flex flex-col">
                   <label
                     htmlFor="details"
@@ -289,7 +317,8 @@ const Contact = ({ t }) => {
 
                   <textarea
                     id="details"
-                    name="details"
+                    name="Detalle de servicios solicitados"
+                    required
                     rows={14}
                     placeholder={
                       t?.contact?.form?.detailsPlaceholder ||
@@ -301,11 +330,26 @@ const Contact = ({ t }) => {
                   <div className="mt-12">
                     <button
                       type="submit"
-                      className="w-full rounded-full border border-[#0A0A0A] bg-[#0A0A0A] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-white transition-all duration-300 hover:bg-[#111111]"
+                      disabled={loading}
+                      className="w-full rounded-full border border-[#0A0A0A] bg-[#0A0A0A] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-white transition-all duration-300 hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70"
                     >
-                      {t?.contact?.button || "Enviar consulta"}
+                      {loading
+                        ? "Enviando..."
+                        : t?.contact?.button || "Enviar consulta"}
                     </button>
                   </div>
+
+                  {success && (
+                    <p className="mt-4 text-sm font-medium text-green-600">
+                      Consulta enviada correctamente.
+                    </p>
+                  )}
+
+                  {error && (
+                    <p className="mt-4 text-sm font-medium text-red-600">
+                      {error}
+                    </p>
+                  )}
                 </div>
               </form>
             </div>
@@ -316,7 +360,15 @@ const Contact = ({ t }) => {
   );
 };
 
-const InputField = ({ id, name, icon: Icon, label, placeholder, type }) => {
+const InputField = ({
+  id,
+  name,
+  icon: Icon,
+  label,
+  placeholder,
+  type,
+  required = false,
+}) => {
   return (
     <div>
       <label
@@ -330,6 +382,7 @@ const InputField = ({ id, name, icon: Icon, label, placeholder, type }) => {
       <input
         id={id}
         name={name}
+        required={required}
         type={type}
         placeholder={placeholder}
         className="h-14 w-full rounded-2xl border border-[#D1D1D1] bg-[#fafafa] px-4 text-sm text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
