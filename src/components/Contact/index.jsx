@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import {
   UserRound,
   Mail,
@@ -49,51 +47,6 @@ const Contact = ({ t }) => {
     threshold: 0.08,
     rootMargin: "0px 0px -10% 0px",
   });
-
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    setLoading(true);
-    setError("");
-    setSuccess(false);
-
-    const formData = new FormData(e.target);
-
-    const payload = {
-      fullName: formData.get("fullName"),
-      company: formData.get("company"),
-      email: formData.get("email"),
-      address: formData.get("address"),
-      phone: formData.get("phone"),
-      area: formData.get("area"),
-      details: formData.get("details"),
-    };
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        throw new Error("Error sending email");
-      }
-
-      setSuccess(true);
-      e.target.reset();
-    } catch (err) {
-      setError("No se pudo enviar el formulario.");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <section id="contact" className="relative bg-[#f2f3f5] py-24 md:py-28">
@@ -220,9 +173,22 @@ const Contact = ({ t }) => {
               }`}
             >
               <form
-                onSubmit={handleSubmit}
+                action="https://formsubmit.co/info.pov360@gmail.com"
+                method="POST"
                 className="grid gap-6 lg:grid-cols-2"
               >
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="Nueva consulta desde POV360"
+                />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="https://www.pov360virtualtour.com/#contact"
+                />
                 <div className="space-y-6">
                   <InputField
                     id="fullName"
@@ -329,34 +295,15 @@ const Contact = ({ t }) => {
                       t?.contact?.form?.detailsPlaceholder ||
                       "Contanos qué servicios necesitás, detalles del espacio, ubicación y cualquier información útil para prepararte una propuesta."
                     }
-                    className="
-    h-[460px]
-    w-full
-    resize-none
-    rounded-[1.75rem]
-    border border-[#D1D1D1]
-    bg-[#fafafa]
-    px-5 py-4
-    text-sm
-    leading-7
-    text-[#0A0A0A]
-    outline-none
-    transition-all duration-300
-    placeholder:text-[#8a8f96]
-    focus:border-[#9db7d3]
-    focus:bg-white
-    focus:ring-4
-    focus:ring-[#9db7d3]/15
-  "
+                    className="h-[460px] w-full resize-none rounded-[1.75rem] border border-[#D1D1D1] bg-[#fafafa] px-5 py-4 text-sm leading-7 text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
                   />
 
                   <div className="mt-12">
                     <button
                       type="submit"
-                      disabled={loading}
-                      className="w-full rounded-full border border-[#0A0A0A] bg-[#0A0A0A] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-white transition-all duration-300 hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70"
+                      className="w-full rounded-full border border-[#0A0A0A] bg-[#0A0A0A] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-white transition-all duration-300 hover:bg-[#111111]"
                     >
-                      {loading ? "Enviando..." : "Enviar consulta"}
+                      {t?.contact?.button || "Enviar consulta"}
                     </button>
                   </div>
                   {success && (
