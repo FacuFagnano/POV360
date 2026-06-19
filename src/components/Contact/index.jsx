@@ -306,15 +306,6 @@ const Contact = ({ t }) => {
                       {t?.contact?.button || "Enviar consulta"}
                     </button>
                   </div>
-                  {success && (
-                    <p className="mt-4 text-sm text-green-600">
-                      Consulta enviada correctamente.
-                    </p>
-                  )}
-
-                  {error && (
-                    <p className="mt-4 text-sm text-red-600">{error}</p>
-                  )}
                 </div>
               </form>
             </div>
