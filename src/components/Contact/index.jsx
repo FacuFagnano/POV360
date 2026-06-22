@@ -13,7 +13,7 @@ import {
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import useRevealOnScroll from "../../hooks/useRevealOnScroll";
 
-const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/facundofagnano@gmail.com";
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/info.pov360@gmail.com";
 
 const contactCards = [
   {
