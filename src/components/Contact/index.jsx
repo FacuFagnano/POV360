@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   UserRound,
   Mail,
@@ -6,15 +8,12 @@ import {
   Building2,
   ClipboardList,
   Ruler,
-  Users,
 } from "lucide-react";
 
-import{
-  FaWhatsapp,
-  FaInstagram,
-} from "react-icons/fa";
-
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import useRevealOnScroll from "../../hooks/useRevealOnScroll";
+
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/facundofagnano@gmail.com";
 
 const contactCards = [
   {
@@ -52,6 +51,42 @@ const Contact = ({ t }) => {
     rootMargin: "0px 0px -10% 0px",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setSuccess(false);
+    setError("");
+
+    const formData = new FormData(e.target);
+
+    formData.append("_subject", "Nueva consulta desde POV360");
+    formData.append("_captcha", "false");
+    formData.append("_template", "table");
+
+    try {
+      const response = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("No se pudo enviar el formulario.");
+      }
+
+      setSuccess(true);
+      e.target.reset();
+    } catch (err) {
+      setError("No se pudo enviar el formulario. Intentá nuevamente.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="relative bg-[#f2f3f5] py-24 md:py-28">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(157,183,211,0.12),transparent_32%)]" />
@@ -84,7 +119,9 @@ const Contact = ({ t }) => {
           <div className="mt-14 grid gap-8 xl:grid-cols-[0.95fr_1.45fr]">
             <aside
               className={`rounded-[2rem] border border-[#D1D1D1] bg-[#0A0A0A] p-7 text-white shadow-[0_18px_50px_rgba(10,10,10,0.14)] transition-all duration-700 md:p-8 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-8 opacity-0"
               }`}
             >
               <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
@@ -124,8 +161,14 @@ const Contact = ({ t }) => {
                     <a
                       key={item.label}
                       href={item.href}
-                      target={item.href.startsWith("http") ? "_blank" : undefined}
-                      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      target={
+                        item.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        item.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                     >
                       {content}
                     </a>
@@ -163,48 +206,70 @@ const Contact = ({ t }) => {
 
             <div
               className={`rounded-[2rem] border border-[#D1D1D1] bg-white p-7 shadow-[0_18px_50px_rgba(10,10,10,0.07)] transition-all delay-100 duration-700 md:p-8 ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-8 opacity-0"
               }`}
             >
-              <form className="grid gap-6 lg:grid-cols-2">
+              <form
+                onSubmit={handleSubmit}
+                className="grid gap-6 lg:grid-cols-2"
+              >
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="Nueva consulta desde POV360"
+                />
                 <div className="space-y-6">
                   <InputField
                     id="fullName"
-                    name="fullName"
+                    name="Nombre"
+                    required
                     icon={UserRound}
-                    label={t?.contact?.form?.fullNameLabel || "Nombre y apellido"}
+                    label={
+                      t?.contact?.form?.fullNameLabel || "Nombre y apellido"
+                    }
                     placeholder={
-                      t?.contact?.form?.fullNamePlaceholder || "Tu nombre completo"
+                      t?.contact?.form?.fullNamePlaceholder ||
+                      "Tu nombre completo"
                     }
                     type="text"
                   />
 
                   <InputField
                     id="company"
-                    name="company"
+                    name="Empresa"
                     icon={Building2}
-                    label={t?.contact?.form?.companyLabel || "Inmobiliaria / Empresa"}
+                    label={
+                      t?.contact?.form?.companyLabel || "Inmobiliaria / Empresa"
+                    }
                     placeholder={
-                      t?.contact?.form?.companyPlaceholder || "Nombre de tu empresa"
+                      t?.contact?.form?.companyPlaceholder ||
+                      "Nombre de tu empresa"
                     }
                     type="text"
                   />
 
                   <InputField
                     id="email"
-                    name="email"
+                    name="Email"
+                    required
                     icon={Mail}
-                    label={t?.contact?.form?.emailLabel || "Casilla de correo *"}
+                    label={
+                      t?.contact?.form?.emailLabel || "Casilla de correo *"
+                    }
                     placeholder={t?.contact?.form?.emailPlaceholder || "Email"}
                     type="email"
                   />
 
                   <InputField
                     id="address"
-                    name="address"
+                    name="Dirección"
+                    required
                     icon={MapPin}
                     label={
-                      t?.contact?.form?.addressLabel || "Dirección del relevamiento"
+                      t?.contact?.form?.addressLabel ||
+                      "Dirección del relevamiento"
                     }
                     placeholder={
                       t?.contact?.form?.addressPlaceholder ||
@@ -215,21 +280,26 @@ const Contact = ({ t }) => {
 
                   <InputField
                     id="phone"
-                    name="phone"
+                    name="Teléfono"
                     icon={Phone}
                     label={t?.contact?.form?.phoneLabel || "Teléfono"}
-                    placeholder={t?.contact?.form?.phonePlaceholder || "Teléfono"}
+                    placeholder={
+                      t?.contact?.form?.phonePlaceholder || "Teléfono"
+                    }
                     type="tel"
                   />
 
                   <InputField
                     id="area"
-                    name="area"
+                    name="Metros"
                     icon={Ruler}
                     label={
-                      t?.contact?.form?.areaLabel || "Metros cuadrados a relevar"
+                      t?.contact?.form?.areaLabel ||
+                      "Metros cuadrados a relevar"
                     }
-                    placeholder={t?.contact?.form?.areaPlaceholder || "Ej: 120 m²"}
+                    placeholder={
+                      t?.contact?.form?.areaPlaceholder || "Ej: 120 m²"
+                    }
                     type="text"
                   />
                 </div>
@@ -251,21 +321,39 @@ const Contact = ({ t }) => {
 
                   <textarea
                     id="details"
-                    name="details"
-                    rows="12"
+                    name="Servicio"
+                    required
+                    rows={14}
                     placeholder={
                       t?.contact?.form?.detailsPlaceholder ||
                       "Contanos qué servicios necesitás, detalles del espacio, ubicación y cualquier información útil para prepararte una propuesta."
                     }
-                    className="min-h-[320px] w-full flex-1 rounded-[1.75rem] border border-[#D1D1D1] bg-[#fafafa] px-4 py-4 text-sm leading-7 text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15 lg:min-h-full"
+                    className="h-[460px] w-full resize-none rounded-[1.75rem] border border-[#D1D1D1] bg-[#fafafa] px-5 py-4 text-sm leading-7 text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
                   />
 
-                  <button
-                    type="submit"
-                    className="mt-5 inline-flex items-center justify-center self-start rounded-full border border-[#9db7d3]/40 bg-[#0A0A0A] px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-[#9db7d3]/60 hover:bg-[#111111] hover:shadow-[0_14px_35px_rgba(10,10,10,0.12)]"
-                  >
-                    {t?.contact?.button}
-                  </button>
+                  <div className="mt-12">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full rounded-full border border-[#0A0A0A] bg-[#0A0A0A] px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-white transition-all duration-300 hover:bg-[#111111] disabled:cursor-not-allowed disabled:opacity-70"
+                    >
+                      {loading
+                        ? "Enviando..."
+                        : t?.contact?.button || "Enviar consulta"}
+                    </button>
+                  </div>
+
+                  {success && (
+                    <p className="mt-4 text-sm font-medium text-green-600">
+                      Consulta enviada correctamente.
+                    </p>
+                  )}
+
+                  {error && (
+                    <p className="mt-4 text-sm font-medium text-red-600">
+                      {error}
+                    </p>
+                  )}
                 </div>
               </form>
             </div>
@@ -276,7 +364,15 @@ const Contact = ({ t }) => {
   );
 };
 
-const InputField = ({ id, name, icon: Icon, label, placeholder, type }) => {
+const InputField = ({
+  id,
+  name,
+  icon: Icon,
+  label,
+  placeholder,
+  type,
+  required = false,
+}) => {
   return (
     <div>
       <label
@@ -290,6 +386,7 @@ const InputField = ({ id, name, icon: Icon, label, placeholder, type }) => {
       <input
         id={id}
         name={name}
+        required={required}
         type={type}
         placeholder={placeholder}
         className="h-14 w-full rounded-2xl border border-[#D1D1D1] bg-[#fafafa] px-4 text-sm text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
