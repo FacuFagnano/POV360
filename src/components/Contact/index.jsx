@@ -13,8 +13,7 @@ import {
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import useRevealOnScroll from "../../hooks/useRevealOnScroll";
 
-const FORMSUBMIT_ENDPOINT =
-  "https://formsubmit.co/ajax/facundofagnano@gmail.com";
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/facundofagnano@gmail.com";
 
 const contactCards = [
   {
@@ -216,10 +215,15 @@ const Contact = ({ t }) => {
                 onSubmit={handleSubmit}
                 className="grid gap-6 lg:grid-cols-2"
               >
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="Nueva consulta desde POV360"
+                />
                 <div className="space-y-6">
                   <InputField
                     id="fullName"
-                    name="Nombre y apellido"
+                    name="Nombre"
                     required
                     icon={UserRound}
                     label={
@@ -234,7 +238,7 @@ const Contact = ({ t }) => {
 
                   <InputField
                     id="company"
-                    name="Inmobiliaria / Empresa"
+                    name="Empresa"
                     icon={Building2}
                     label={
                       t?.contact?.form?.companyLabel || "Inmobiliaria / Empresa"
@@ -260,7 +264,7 @@ const Contact = ({ t }) => {
 
                   <InputField
                     id="address"
-                    name="Dirección del relevamiento"
+                    name="Dirección"
                     required
                     icon={MapPin}
                     label={
@@ -287,7 +291,7 @@ const Contact = ({ t }) => {
 
                   <InputField
                     id="area"
-                    name="Metros cuadrados"
+                    name="Metros"
                     icon={Ruler}
                     label={
                       t?.contact?.form?.areaLabel ||
@@ -317,7 +321,7 @@ const Contact = ({ t }) => {
 
                   <textarea
                     id="details"
-                    name="Detalle de servicios solicitados"
+                    name="Servicio"
                     required
                     rows={14}
                     placeholder={
