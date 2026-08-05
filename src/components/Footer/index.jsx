@@ -54,9 +54,9 @@ const Footer = ({ t }) => {
                 className="group inline-flex items-center gap-4"
               >
                 <img
-                  src="/Isologotipo-POV360.png"
+                  src="/Isotipo-POV360.png"
                   alt="POV360 Logo"
-                  className="h-14 w-14 object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-14 w-14 scale-[2.5] object-contain transition-transform duration-300 group-hover:scale-220"
                 />
 
                 <div className="leading-none">

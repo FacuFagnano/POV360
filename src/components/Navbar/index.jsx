@@ -79,9 +79,9 @@ const Navbar = ({ language = "es", setLanguage, t }) => {
         >
           <div className="flex h-11 w-11 items-center justify-center overflow-visible">
             <img
-              src="/Isologotipo-POV360.png"
+              src="/Isotipo-POV360.png"
               alt="POV360"
-              className="h-11 w-11 scale-[1.9] object-contain transition-transform duration-300 group-hover:scale-[1.5]"
+              className="h-11 w-11 scale-[3.0] object-contain transition-transform duration-300 group-hover:scale-[2.5]"
             />
           </div>
 
