@@ -13,7 +13,8 @@ import {
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import useRevealOnScroll from "../../hooks/useRevealOnScroll";
 
-const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/info.pov360@gmail.com";
+const FORMSUBMIT_ENDPOINT =
+  "https://formsubmit.co/ajax/info.pov360@gmail.com";
 
 const contactCards = [
   {
@@ -141,7 +142,7 @@ const Contact = ({ t }) => {
                   const Icon = item.icon;
 
                   const content = (
-                    <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-[#9db7d3]/40 hover:bg-white/10">
+                    <div className="flex mt-1.5 items-start gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 hover:border-[#9db7d3]/40 hover:bg-white/10">
                       <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10">
                         <Icon size={18} />
                       </div>
@@ -150,6 +151,7 @@ const Contact = ({ t }) => {
                         <p className="text-sm font-semibold text-white">
                           {item.label}
                         </p>
+
                         <p className="mt-1 text-sm text-[#D1D1D1]">
                           {item.value}
                         </p>
@@ -180,7 +182,7 @@ const Contact = ({ t }) => {
 
               <div className="mt-8 border-t border-white/10 pt-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7A7F85]">
-                  Social
+                  {t?.contact?.socialTitle}
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-3">
@@ -220,6 +222,7 @@ const Contact = ({ t }) => {
                   name="_subject"
                   value="Nueva consulta desde POV360"
                 />
+
                 <div className="space-y-6">
                   <InputField
                     id="fullName"
@@ -305,29 +308,56 @@ const Contact = ({ t }) => {
                 </div>
 
                 <div className="flex flex-col">
+                  <div>
+                    <label
+                      htmlFor="serviceType"
+                      className="mb-2.5 flex items-center gap-2 text-sm font-medium text-[#1f242a]"
+                    >
+                      <ClipboardList
+                        size={16}
+                        className="shrink-0 text-[#7A7F85]"
+                      />
+
+                      <span>{t?.contact?.form?.serviceLabel}</span>
+                    </label>
+
+                    <select
+                      id="serviceType"
+                      name="Servicio"
+                      required
+                      defaultValue=""
+                      className="h-14 w-full cursor-pointer rounded-2xl border border-[#D1D1D1] bg-[#fafafa] px-4 text-sm text-[#0A0A0A] outline-none transition-all duration-300 focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
+                    >
+                      <option value="" disabled>
+                        {t?.contact?.form?.servicePlaceholder}
+                      </option>
+
+                      {t?.contact?.form?.serviceOptions?.map((service) => (
+                        <option key={service.value} value={service.value}>
+                          {service.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
                   <label
                     htmlFor="details"
-                    className="mb-2.5 flex items-start gap-2 text-sm font-medium leading-6 text-[#1f242a]"
+                    className="mb-2.5 mt-6 flex items-start gap-2 text-sm font-medium leading-6 text-[#1f242a]"
                   >
                     <ClipboardList
                       size={16}
                       className="mt-1 shrink-0 text-[#7A7F85]"
                     />
-                    <span>
-                      {t?.contact?.form?.detailsLabel ||
-                        "Indicá los servicios que deseás contratar y te contactaremos a la brevedad."}
-                    </span>
+
+                    <span>{t?.contact?.form?.detailsLabel}</span>
                   </label>
 
                   <textarea
                     id="details"
-                    name="Servicio"
+                    name="Comentarios"
                     required
                     rows={14}
-                    placeholder={
-                      t?.contact?.form?.detailsPlaceholder ||
-                      "Contanos qué servicios necesitás, detalles del espacio, ubicación y cualquier información útil para prepararte una propuesta."
-                    }
+                    placeholder={t?.contact?.form?.detailsPlaceholder}
                     className="h-[460px] w-full resize-none rounded-[1.75rem] border border-[#D1D1D1] bg-[#fafafa] px-5 py-4 text-sm leading-7 text-[#0A0A0A] outline-none transition-all duration-300 placeholder:text-[#8a8f96] focus:border-[#9db7d3] focus:bg-white focus:ring-4 focus:ring-[#9db7d3]/15"
                   />
 

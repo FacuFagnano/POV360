@@ -26,7 +26,7 @@ const translations = {
         {
           title: "Fotos 360°",
           description:
-            "Capturamos imágenes inmersivas en 360 grados para mostrar cada espacio de manera interactiva y profesional.",
+            "Capturamos imágenes inmersivas en 360° para mostrar cada espacio de manera interactiva y profesional.",
           links: [
             {
               label: "Ver ejemplo",
@@ -61,7 +61,7 @@ const translations = {
           ],
         },
         {
-          title: "Fotografía Profesional",
+          title: "Fotografía Profesional (HDR)",
           description:
             "Realizamos fotografías profesionales de alta calidad para potenciar la imagen visual de tu marca o propiedad.",
           links: [],
@@ -79,6 +79,8 @@ const translations = {
       infoTitle: "POV360",
       infoText:
         "Creamos experiencias visuales inmersivas para mostrar propiedades, espacios y proyectos con una presencia más profesional, moderna e impactante.",
+
+      socialTitle: "REDES SOCIALES",
 
       contactItems: {
         emailLabel: "Email",
@@ -105,11 +107,28 @@ const translations = {
         areaLabel: "Metros cuadrados a relevar",
         areaPlaceholder: "Ej: 120 m²",
 
+        serviceLabel: "Servicio solicitado *",
+        servicePlaceholder: "Seleccioná un servicio",
+        serviceOptions: [
+          {
+            value: "HDR Photography",
+            label: "Fotografía HDR",
+          },
+          {
+            value: "Tour 360",
+            label: "Tour 360",
+          },
+          {
+            value: "Google Map",
+            label: "Google Maps",
+          },
+        ],
+
         detailsLabel:
-          "Indicá los servicios que deseás contratar y te contactaremos a la brevedad. Foto HDR, Tour, Video, Retiro de llaves *",
+          "Indicá los servicios que deseás contratar y te contactaremos a la brevedad. Foto HDR & Tour.",
 
         detailsPlaceholder:
-          "Contanos qué servicios necesitás, detalles del espacio, ubicación y cualquier información útil para prepararte una propuesta.",
+          "Por favor, brindar tantos detalles como sea posible.",
       },
     },
 
@@ -136,7 +155,7 @@ const translations = {
       badge: "Immersive 360° experiences",
       title: "We transform spaces into visual experiences that make an impact",
       subtitle:
-        "We create virtual tours, professional photography, 360° imagery, and immersive content that help your project stand out with a modern, professional, and memorable presence.",
+        "We create virtual tours, professional photography, 360° imagery and immersive content that help your project stand out with a modern, professional and memorable presence.",
       primaryCta: "View services",
       secondaryCta: "Contact",
     },
@@ -151,7 +170,7 @@ const translations = {
         {
           title: "360° Photography",
           description:
-            "We capture immersive 360-degree images to showcase every space in an interactive and professional way.",
+            "We capture immersive 360° images to showcase every space in an interactive and professional way.",
           links: [
             {
               label: "View example",
@@ -186,7 +205,7 @@ const translations = {
           ],
         },
         {
-          title: "Professional Photography",
+          title: "Professional Photography (HDR)",
           description:
             "We provide high-quality professional photography to enhance the visual image of your brand or property.",
           links: [],
@@ -204,6 +223,8 @@ const translations = {
       infoTitle: "POV360",
       infoText:
         "We create immersive visual experiences to showcase properties, spaces and projects with a more professional, modern and impactful presence.",
+
+      socialTitle: "SOCIAL",
 
       contactItems: {
         emailLabel: "Email",
@@ -230,11 +251,27 @@ const translations = {
         areaLabel: "Square meters to survey",
         areaPlaceholder: "E.g. 120 m²",
 
-        detailsLabel:
-          "Tell us which services you would like to hire and we will contact you shortly. HDR Photography, Tour, Video, Key pick-up *",
+        serviceLabel: "Requested service *",
+        servicePlaceholder: "Select a service",
+        serviceOptions: [
+          {
+            value: "HDR Photography",
+            label: "HDR Photography",
+          },
+          {
+            value: "Tour 360",
+            label: "360 Tour",
+          },
+          {
+            value: "Google Map",
+            label: "Google Maps",
+          },
+        ],
 
-        detailsPlaceholder:
-          "Tell us what services you need, details about the space, location and any useful information so we can prepare a proposal.",
+        detailsLabel:
+          "Tell us which services you would like to hire and we will contact you shortly. HDR Photography & Tour",
+
+        detailsPlaceholder: "Please provide as much detail as possible.",
       },
     },
 
