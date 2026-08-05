@@ -76,13 +76,13 @@ const Contact = ({ t }) => {
       });
 
       if (!response.ok) {
-        throw new Error("No se pudo enviar el formulario.");
+        throw new Error(t?.contact?.form?.formFail);
       }
 
       setSuccess(true);
       e.target.reset();
     } catch (err) {
-      setError("No se pudo enviar el formulario. Intentá nuevamente.");
+      setError(t?.contact?.form?.formFailTryAgain);
     } finally {
       setLoading(false);
     }
@@ -375,7 +375,7 @@ const Contact = ({ t }) => {
 
                   {success && (
                     <p className="mt-4 text-sm font-medium text-green-600">
-                      Consulta enviada correctamente.
+                      {t?.contact?.form?.formSentSuccess}
                     </p>
                   )}
 

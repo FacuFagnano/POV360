@@ -129,6 +129,12 @@ const translations = {
 
         detailsPlaceholder:
           "Por favor, brindar tantos detalles como sea posible.",
+
+        formSentSuccess: "Consulta enviada correctamente.",
+
+        formFail: "No se pudo enviar el formulario.",
+
+        formFailTryAgain: "No se pudo enviar el formulario. Intente nuevamente.",
       },
     },
 
@@ -272,6 +278,12 @@ const translations = {
           "Tell us which services you would like to hire and we will contact you shortly. HDR Photography & Tour",
 
         detailsPlaceholder: "Please provide as much detail as possible.",
+
+        formSentSuccess: "Enquiry succesfully delivered",
+
+        formFail: "The form could not be submitted.",
+
+        formFailTryAgain: "The form could not be submitted. Try again.",
       },
     },
 
