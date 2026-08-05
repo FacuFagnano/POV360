@@ -218,7 +218,7 @@ const translations = {
       title: "Property survey request",
       subtitle:
         "Complete the form and we’ll get back to you shortly to arrange the visit.",
-      button: "Send inquiry",
+      button: "Send enquiry",
 
       infoTitle: "POV360",
       infoText:
